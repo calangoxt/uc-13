@@ -1,5 +1,5 @@
 import express, { Application, Request, Response } from 'express';
-import { AppDataSource } from './db/data-source';
+import { AppDataSource } from './config/data-source';
 import routesU from './routes/RoutesUser';
 import routesP from './routes/RoutesPersonagem';
 import cors from "cors"
@@ -10,7 +10,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-    origin: 'localhost:3000'
+    origin: ['localhost:3000',
+    'http://127.0.0.1:5500']
+
 }));
 
 app.use(express.static('public'));

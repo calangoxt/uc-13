@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { AppDataSource } from '../db/data-source';
+import { AppDataSource } from '../config/data-source';
 import { User } from '../models/Users';
 import bcryptjs from "bcryptjs"
 

@@ -4,91 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login e Cadastro</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(120deg, #3498db, #6dd5fa);
-    }
-
-    .container {
-      background-color: white;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      width: 90%;
-      max-width: 400px;
-      transition: 0.3s;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 0.7rem;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-    }
-
-    .btn {
-      width: 100%;
-      padding: 0.8rem;
-      background-color: #2980b9;
-      border: none;
-      color: white;
-      font-size: 1rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background-color: #1f618d;
-    }
-
-    .toggle {
-      margin-top: 1rem;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-
-    .toggle a {
-      color: #2980b9;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-
-    .msg {
-      margin-top: 1rem;
-      text-align: center;
-      color: red;
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div class="container">
@@ -96,15 +12,17 @@
     <!-- Tela de Login -->
     <div id="login-box">
       <h2>Login</h2>
-      <div class="form-group">
-        <label for="login-user">Usuário</label>
-        <input type="text" id="login-user" placeholder="Digite seu usuário" />
-      </div>
-      <div class="form-group">
-        <label for="login-pass">Senha</label>
-        <input type="password" id="login-pass" placeholder="Digite sua senha" />
-      </div>
-      <button class="btn" onclick="fazerLogin()">Entrar</button>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-user">Usuário</label>
+          <input type="text" id="login-user" placeholder="Digite seu usuário" required />
+        </div>
+        <div class="form-group">
+          <label for="login-pass">Senha</label>
+          <input type="password" id="login-pass" placeholder="Digite sua senha" required />
+        </div>
+        <button class="btn" type="submit">Entrar</button>
+      </form>
       <div class="toggle">Não tem conta? <a onclick="mostrarCadastro()">Cadastre-se</a></div>
       <div class="msg" id="login-msg"></div>
     </div>
@@ -112,71 +30,27 @@
     <!-- Tela de Cadastro -->
     <div id="cadastro-box" class="hidden">
       <h2>Cadastro</h2>
-      <div class="form-group">
-        <label for="cad-nome">Nome</label>
-        <input type="text" id="cad-nome" placeholder="Digite seu nome" />
-      </div>
-      <div class="form-group">
-        <label for="cad-email">E-mail</label>
-        <input type="email" id="cad-email" placeholder="Digite seu e-mail" />
-      </div>
-      <div class="form-group">
-        <label for="cad-senha">Senha</label>
-        <input type="password" id="cad-senha" placeholder="Digite uma senha" />
-      </div>
-      <button class="btn" onclick="fazerCadastro()">Cadastrar</button>
+      <form id="cadastro-form">
+        <div class="form-group">
+          <label for="cad-nome">Nome</label>
+          <input type="text" id="cad-nome" placeholder="Digite seu nome" required />
+        </div>
+        <div class="form-group">
+          <label for="cad-email">E-mail</label>
+          <input type="email" id="cad-email" placeholder="Digite seu e-mail" required />
+        </div>
+        <div class="form-group">
+          <label for="cad-senha">Senha</label>
+          <input type="password" id="cad-senha" placeholder="Digite uma senha" required />
+        </div>
+        <button class="btn" type="submit">Cadastrar</button>
+      </form>
       <div class="toggle">Já tem conta? <a onclick="mostrarLogin()">Entrar</a></div>
       <div class="msg" id="cadastro-msg"></div>
     </div>
 
   </div>
 
-  <script>
-    function mostrarCadastro() {
-      document.getElementById('login-box').classList.add('hidden');
-      document.getElementById('cadastro-box').classList.remove('hidden');
-      limparMensagens();
-    }
-
-    function mostrarLogin() {
-      document.getElementById('cadastro-box').classList.add('hidden');
-      document.getElementById('login-box').classList.remove('hidden');
-      limparMensagens();
-    }
-
-    function limparMensagens() {
-      document.getElementById('login-msg').innerText = '';
-      document.getElementById('cadastro-msg').innerText = '';
-    }
-
-    function fazerLogin() {
-      const user = document.getElementById('login-user').value;
-      const pass = document.getElementById('login-pass').value;
-      const msg = document.getElementById('login-msg');
-
-      if (user === 'admin' && pass === '1234') {
-        msg.style.color = 'green';
-        msg.innerText = 'Login realizado com sucesso!';
-      } else {
-        msg.style.color = 'red';
-        msg.innerText = 'Usuário ou senha incorretos.';
-      }
-    }
-
-    function fazerCadastro() {
-      const nome = document.getElementById('cad-nome').value;
-      const email = document.getElementById('cad-email').value;
-      const senha = document.getElementById('cad-senha').value;
-      const msg = document.getElementById('cadastro-msg');
-
-      if (nome && email && senha) {
-        msg.style.color = 'green';
-        msg.innerText = 'Cadastro realizado com sucesso!';
-      } else {
-        msg.style.color = 'red';
-        msg.innerText = 'Preencha todos os campos!';
-      }
-    }
-  </script>
+  <script src="./script.js" defer></script>
 </body>
 </html>

@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx ts-node-dev src/server.ts",
+    "generate": "npx tmh generate newMigration",
+    "migrate": "npx tmh run",
+    "revert": "npx tmh revert"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +27,7 @@
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.3",
     "ts-node-dev": "^2.0.0",
+    "typeorm-migration-helper": "^1.0.2",
     "typescript": "^5.8.3"
   }
 }
