@@ -1,6 +1,6 @@
 # 🙎 cadrasto de personagens - CRUD Completo
 
-Este é um projeto simples de uma "cadrasto de personagens", onde é possível **cadastrar, visualizar, editar e excluir** personagens. Ele utiliza um backend com **Typescript, Express e TypeORM** e um frontend leve em **HTML, CSS e JavaScript puro**.
+Este é um projeto simples de um "cadrasto de personagens", onde é possível **cadastrar, visualizar, editar e excluir** personagens. Ele utiliza um backend com **Typescript, Express e TypeORM** e um frontend leve em **HTML, CSS e JavaScript puro**.
 
 ---
 
